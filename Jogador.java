@@ -1,8 +1,8 @@
-public class Player {
+public class Jogador {
   private String name;
-  private Piece color;
+  private Peca color;
 
-  public Player(String name, Piece color) {
+  public Jogador(String name, Peca color) {
     this.name = name;
     this.color = color;
   }
@@ -11,7 +11,7 @@ public class Player {
     return name;
   }
 
-  public Piece getColor() {
+  public Peca getColor() {
     return color;
   }
 }

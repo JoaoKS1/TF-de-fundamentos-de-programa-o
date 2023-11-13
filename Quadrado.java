@@ -1,15 +1,15 @@
-public class Square {
-  private Piece piece;
+public class Quadrado {
+  private Peca piece;
 
-  public Square(Piece piece) {
+  public Quadrado(Peca piece) {
     this.piece = piece;
   }
 
-  public Piece getPiece() {
+  public Peca getPiece() {
     return piece;
   }
 
-  public void setPiece(Piece piece) {
+  public void setPiece(Peca piece) {
     this.piece = piece;
   }
 

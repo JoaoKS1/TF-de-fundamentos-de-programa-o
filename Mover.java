@@ -2,21 +2,21 @@
  * Represents a move in a game of checkers.
  * Stores the starting and ending positions of the move.
  */
-public class Move {
+public class Mover {
   private int startRow;
   private int startCol;
   private int endRow;
   private int endCol;
 
-  public Move(int startRow, int startCol, int endRow, int endCol) {
+  public Mover(int startRow, int startCol, int endRow, int endCol) {
     this.startRow = startRow;
     this.startCol = startCol;
     this.endRow = endRow;
     this.endCol = endCol;
   }
 
-  public boolean execute(Board board) {
-    Piece piece = board.getPiece(startRow, startCol);
+  public boolean execute(Tabuleiro board) {
+    Peca piece = board.getPiece(startRow, startCol);
     if (piece == null) {
       System.out.println("No piece to move");
       return false;
@@ -51,8 +51,8 @@ public class Move {
    * @param board the board to validate the move on
    * @return true if the move is valid, false otherwise
    */
-  public boolean validate(Board board) {
-    Piece startPiece = board.getPiece(startRow, startCol);
+  public boolean validate(Tabuleiro board) {
+    Peca startPiece = board.getPiece(startRow, startCol);
 
     if (startPiece == null) {
       return false;
@@ -69,7 +69,7 @@ public class Move {
     if (Math.abs(startRow - endRow) == 2) {
       int capturedRow = (startRow + endRow) / 2;
       int capturedCol = (startCol + endCol) / 2;
-      Piece capturedPiece = board.getPiece(capturedRow, capturedCol);
+      Peca capturedPiece = board.getPiece(capturedRow, capturedCol);
       if (capturedPiece == null) {
         return false;
       }
