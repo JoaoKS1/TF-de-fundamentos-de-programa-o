@@ -1,11 +1,11 @@
 /**
  * Represents a piece in the game of checkers.
  */
-public class Piece {
+public class Peca {
   private boolean isDama;
   private int color;
 
-  public Piece(int color) {
+  public Peca(int color) {
     this.color = color;
     isDama = false;
   }

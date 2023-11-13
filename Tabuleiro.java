@@ -1,10 +1,10 @@
-public class Board {
-  private Square[][] board;
+public class Tabuleiro {
+  private Quadrado[][] board;
   private int size;
 
-  public Board(int size) {
+  public Tabuleiro(int size) {
     this.size = size;
-    this.board = new Square[size][size];
+    this.board = new Quadrado[size][size];
     initBoard();
   }
 
@@ -12,11 +12,11 @@ public class Board {
     for (int row = 0; row < size; row++) {
       for (int col = 0; col < size; col++) {
         if (row < 3 && (row + col) % 2 != 0) {
-          board[row][col] = new Square(new Piece(2));
+          board[row][col] = new Quadrado(new Peca(2));
         } else if (row > 4 && (row + col) % 2 != 0) {
-          board[row][col] = new Square(new Piece(1));
+          board[row][col] = new Quadrado(new Peca(1));
         } else {
-          board[row][col] = new Square(null);
+          board[row][col] = new Quadrado(null);
         }
       }
     }
@@ -37,24 +37,24 @@ public class Board {
     }
   }
 
-  public Square getSquare(int row, int col) {
+  public Quadrado getSquare(int row, int col) {
     return board[row][col];
   }
 
-  public Piece getPiece(int row, int col) {
+  public Peca getPiece(int row, int col) {
     return board[row][col].getPiece();
   }
 
-  public Piece setPiece(int row, int col, Piece piece) {
-    Piece oldPiece = board[row][col].getPiece();
+  public Peca setPiece(int row, int col, Peca piece) {
+    Peca oldPiece = board[row][col].getPiece();
     board[row][col].setPiece(piece);
     return oldPiece;
   }
 
-  public boolean hasValidMoves(Piece color) {
+  public boolean hasValidMoves(Peca color) {
     for (int row = 0; row < size; row++) {
       for (int col = 0; col < size; col++) {
-        Piece piece = getPiece(row, col);
+        Peca piece = getPiece(row, col);
         if (piece != null && piece.getColor() == color.getColor()) {
           for (int dr = -1; dr <= 1; dr += 2) {
             for (int dc = -1; dc <= 1; dc += 2) {
@@ -78,7 +78,7 @@ public class Board {
   }
 
   public boolean hasValidCapture(int row, int col) {
-    Piece piece = getPiece(row, col);
+    Peca piece = getPiece(row, col);
     if (piece == null) {
       return false;
     }
@@ -90,8 +90,8 @@ public class Board {
         int newRow = row + 2 * dr;
         int newCol = col + 2 * dc;
         if (newRow >= 0 && newRow < size && newCol >= 0 && newCol < size) {
-          Piece capturedPiece = getPiece(row + dr, col + dc);
-          Piece endPiece = getPiece(newRow, newCol);
+          Peca capturedPiece = getPiece(row + dr, col + dc);
+          Peca endPiece = getPiece(newRow, newCol);
           if (capturedPiece != null && capturedPiece.getColor() != color && endPiece == null) {
             return true;
           }

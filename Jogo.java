@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
-public class Game {
-  private Player player1;
-  private Player player2;
-  private Board board;
-  private Player currentPlayer;
+public class Jogo {
+  private Jogador player1;
+  private Jogador player2;
+  private Tabuleiro board;
+  private Jogador currentPlayer;
 
-  public Game() {
-    this.player1 = new Player("Player 1", new Piece(1));
-    this.player2 = new Player("Player 2", new Piece(2));
-    board = new Board(8);
+  public Jogo() {
+    this.player1 = new Jogador("Player 1", new Peca(1));
+    this.player2 = new Jogador("Player 2", new Peca(2));
+    board = new Tabuleiro(8);
     currentPlayer = player1;
   }
 
@@ -39,7 +39,7 @@ public class Game {
       char endColChar = input.next().charAt(0);
       int endCol = Character.toUpperCase(endColChar) - 'A';
 
-      Move move = new Move(startRow, startCol, endRow, endCol);
+      Mover move = new Mover(startRow, startCol, endRow, endCol);
       if (move.validate(board)) {
         boolean mustCaptureAgain = move.execute(board);
         if (!mustCaptureAgain) {
