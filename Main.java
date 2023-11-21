@@ -1,8 +1,9 @@
 public class Main {
-  public static void main(String[] args) {
-    // Create a new game
-    Jogo game = new Jogo();
-    // Start the game
-    game.start();
-  }
+    public static void main(String[] args) {
+        // Cria um novo jogo
+        Jogo game = new Jogo();
+        // Começa o jogo
+        game.start();
+    }
 }
+
